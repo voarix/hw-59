@@ -8,9 +8,15 @@ const App = () => {
 
   return (
     <>
-      <button type='button' onClick={() => setPage(!page)} className='btn btn-primary'>Change page</button>
+      <button
+        type="button"
+        onClick={() => setPage(!page)}
+        className="btn btn-primary"
+      >
+        Change page
+      </button>
 
-      {page ? <Films/> : <Joke/>}
+      {page ? <Films /> : <Joke />}
     </>
   );
 };
