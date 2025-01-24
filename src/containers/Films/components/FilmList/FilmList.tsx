@@ -4,11 +4,18 @@ import FilmItem from "./FilmItem.tsx";
 
 interface Props {
   films: Film[];
-  onChangeInputFilmItem: (e: React.ChangeEvent<HTMLInputElement>, id: string) => void;
+  onChangeInputFilmItem: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: string,
+  ) => void;
   onDelete: (id: string) => void;
 }
 
-const FilmList : React.FC<Props> = ({films, onChangeInputFilmItem, onDelete}) => {
+const FilmList: React.FC<Props> = ({
+  films,
+  onChangeInputFilmItem,
+  onDelete,
+}) => {
   return (
     <>
       {films.length > 0 ? (

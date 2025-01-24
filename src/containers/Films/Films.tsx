@@ -12,12 +12,14 @@ const Films = () => {
 
   const onChangeInputFilmItem = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
-      setFilms((prevState: Film[]) => prevState.map((item) => {
-        if (item.id === id) {
-          return {...item, film: e.target.value};
-        }
-        return item;
-      }));
+      setFilms((prevState: Film[]) =>
+        prevState.map((item) => {
+          if (item.id === id) {
+            return { ...item, film: e.target.value };
+          }
+          return item;
+        }),
+      );
     },
     [],
   );
@@ -28,8 +30,12 @@ const Films = () => {
 
   return (
     <>
-      <FilmForm onSubmitAddToFilm={onAddFilm}/>
-      <FilmList films={films} onChangeInputFilmItem={onChangeInputFilmItem} onDelete={onDelete} />
+      <FilmForm onSubmitAddToFilm={onAddFilm} />
+      <FilmList
+        films={films}
+        onChangeInputFilmItem={onChangeInputFilmItem}
+        onDelete={onDelete}
+      />
     </>
   );
 };
