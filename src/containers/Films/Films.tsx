@@ -1,5 +1,5 @@
 import FilmForm from "./components/FilmForm.tsx";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Film } from "./types";
 import FilmItem from "./components/FilmItem.tsx";
 
@@ -11,27 +11,25 @@ const Films = () => {
     console.log(films);
   };
 
-  const onChangeInputFilmItem = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    id: string,
-  ) => {
-    const newFilms = films.map((item: Film) => {
-      if (item.id === id) {
-        return { ...item, film: e.target.value };
-      }
-      return item;
-    });
-    setFilms(newFilms);
-  };
+  const onChangeInputFilmItem = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+      setFilms((prevState: Film[]) => prevState.map((item) => {
+        if (item.id === id) {
+          return {...item, film: e.target.value};
+        }
+        return item;
+      }));
+    },
+    [],
+  );
 
-  const onDelete = (id: string) => {
-    const newFilms = films.filter((film) => film.id !== id);
-    setFilms(newFilms);
-  };
+  const onDelete = useCallback((id: string) => {
+    setFilms((prevFilms) => prevFilms.filter((film) => film.id !== id));
+  }, []);
 
   return (
     <div className="container">
-      <FilmForm onSubmitAddToFilm={onAddFilm} />
+      <FilmForm onSubmitAddToFilm={onAddFilm}/>
       {films.length > 0 ? (
         films.map((film: Film) => (
           <FilmItem
