@@ -16,7 +16,6 @@ const Joke = () => {
       }
       const newResponse = await response.json();
       setJoke(newResponse.value);
-      console.log(newResponse);
     } catch (err) {
       alert(err);
     } finally {
