@@ -11,10 +11,13 @@ const Films = () => {
     console.log(films);
   };
 
-  const onChangeInputFilmItem = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+  const onChangeInputFilmItem = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: string,
+  ) => {
     const newFilms = films.map((item: Film) => {
       if (item.id === id) {
-        return {...item, film: e.target.value};
+        return { ...item, film: e.target.value };
       }
       return item;
     });
@@ -22,20 +25,20 @@ const Films = () => {
   };
 
   const onDelete = (id: string) => {
-    const newFilms = films.filter(film => film.id !== id);
+    const newFilms = films.filter((film) => film.id !== id);
     setFilms(newFilms);
   };
 
   return (
     <div className="container">
-      <FilmForm onSubmitAddToFilm={onAddFilm}/>
+      <FilmForm onSubmitAddToFilm={onAddFilm} />
       {films.length > 0 ? (
         films.map((film: Film) => (
           <FilmItem
             filmName={film.film}
             key={film.id}
             onChangeInputFilmItem={(e) => onChangeInputFilmItem(e, film.id)}
-          onDelete={() => onDelete(film.id)}
+            onDelete={() => onDelete(film.id)}
           />
         ))
       ) : (
