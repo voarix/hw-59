@@ -8,7 +8,6 @@ interface Props {
 
 const FilmItem: React.FC<Props> = React.memo(
   ({ filmName, onChangeInputFilmItem, onDelete }) => {
-    console.log(filmName);
     return (
       <div className="input-group mb-3">
         <input
