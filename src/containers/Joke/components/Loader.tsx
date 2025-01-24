@@ -4,7 +4,7 @@ interface Props {
   loader: boolean;
 }
 
-const Loader: React.FC<Props> = ({loader}) => {
+const Loader: React.FC<Props> = ({ loader }) => {
   return (
     <>
       {loader ? (

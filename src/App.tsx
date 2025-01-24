@@ -11,7 +11,7 @@ const App = () => {
       <button
         type="button"
         onClick={() => setPage(!page)}
-        className="btn btn-primary mb-5"
+        className="btn btn-primary mb-5 mt-1"
       >
         Change page
       </button>

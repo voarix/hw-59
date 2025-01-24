@@ -30,6 +30,7 @@ const FilmItem: React.FC<Props> = React.memo(
   },
   (prevProps, nextProps) => {
     return prevProps.filmName === nextProps.filmName;
-  });
+  },
+);
 
 export default FilmItem;
