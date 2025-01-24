@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Button from "./components/Button.tsx";
+import Loader from "./components/Loader.tsx";
 
 const Joke = () => {
   const [joke, setJoke] = useState<string>("");
@@ -32,21 +34,8 @@ const Joke = () => {
 
   return (
     <div>
-      <button
-        type="button"
-        onClick={onNewJoke}
-        className="btn btn-primary mb-3"
-      >
-        Новая шутка
-      </button>
-      {loader ? (
-        <div
-          className="spinner-border text-primary position-absolute top-50 start-50"
-          role="status"
-        >
-          <span className="visually-hidden">Loading...</span>
-        </div>
-      ) : null}
+      <Button onNewJoke={onNewJoke} />
+      <Loader loader={loader} />
       {joke ? <p>{joke}</p> : <p>шуток еще нет))</p>}
     </div>
   );
