@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 
 const Joke = () => {
   const [joke, setJoke] = useState<string>("");
+  const [loader, setLoader] = useState<boolean>(false);
 
   useEffect( () => {
     const fetchData = async () => {
       try{
+        setLoader(true);
         const response = await fetch("https://api.chucknorris.io/jokes/random");
 
         if(!response.ok){
@@ -16,6 +18,8 @@ const Joke = () => {
         console.log(newResponse);
       } catch(err) {
         alert(err);
+      } finally {
+        setLoader(false);
       }
     };
 
@@ -24,7 +28,10 @@ const Joke = () => {
   }, []);
 
   return (
-    <div className='container'>
+    <div>
+      {loader ? <div className="spinner-border text-primary position-absolute top-50 start-50" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div> : null}
       {joke ? <p>{joke}</p> : <p>шуток еще нет))</p>}
     </div>
   );

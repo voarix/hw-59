@@ -27,10 +27,10 @@ const Films = () => {
   }, []);
 
   return (
-    <div className="container">
+    <>
       <FilmForm onSubmitAddToFilm={onAddFilm}/>
       <FilmList films={films} onChangeInputFilmItem={onChangeInputFilmItem} onDelete={onDelete} />
-    </div>
+    </>
   );
 };
 

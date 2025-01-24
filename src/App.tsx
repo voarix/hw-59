@@ -7,17 +7,17 @@ const App = () => {
   const [page, setPage] = useState<boolean>(false);
 
   return (
-    <>
+    <div className="container">
       <button
         type="button"
         onClick={() => setPage(!page)}
-        className="btn btn-primary"
+        className="btn btn-primary mb-5"
       >
         Change page
       </button>
 
       {page ? <Films /> : <Joke />}
-    </>
+    </div>
   );
 };
 
