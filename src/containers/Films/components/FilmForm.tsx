@@ -29,7 +29,6 @@ const FilmForm: React.FC<Props> = ({onSubmitAddToFilm}) => {
   };
 
   return (
-    <div>
       <form onSubmit={onSubmit}>
         <div className="mb-3 d-flex">
           <input
@@ -46,7 +45,6 @@ const FilmForm: React.FC<Props> = ({onSubmitAddToFilm}) => {
           </button>
         </div>
       </form>
-    </div>
   );
 };
 
